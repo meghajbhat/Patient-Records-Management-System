@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Appointment</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Book an Appointment</h1>
+        <form method="POST" action="{{ url_for('book_appointment') }}">
+            <div class="form-group">
+                <label for="patient_name">Patient Name</label>
+                <input type="text" id="patient_name" class="form-control" value="{{ user['name'] }}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="patient_email">Email</label>
+                <input type="email" id="patient_email" class="form-control" value="{{ user['email'] }}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="patient_symptoms">Symptoms</label>
+                <textarea id="patient_symptoms" name="symptoms" class="form-control" required>{{ user['symptoms'] }}</textarea>
+            </div>
+            <div class="form-group">
+                <label for="doctor">Choose a Doctor</label>
+                <select id="doctor" name="doctor_id" class="form-control" required>
+                    <option value="" disabled selected>-- Select a Doctor --</option>
+                    {% for doctor in doctors %}
+                        <option value="{{ doctor['D_ID'] }}">{{ doctor['name'] }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="appointment_date">Appointment Date</label>
+                <input type="date" id="appointment_date" name="appointment_date" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="appointment_time">Appointment Time</label>
+                <input type="time" id="appointment_time" name="appointment_time" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Book Appointment</button>
+            <a href="{{ url_for('patients_welcome') }}" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</body>
+</html>

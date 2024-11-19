@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to doctors Connect</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        .button {
+            background: linear-gradient(90deg, #4CAF50, #81C784);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            margin: 10px;
+            text-decoration: none;
+            width: 200px;
+            text-align: center;
+        }
+        .button:hover {
+            background: linear-gradient(90deg, #388E3C, #66BB6A);
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to M&M Hospital</h1>
+    <a href="{{ url_for('signup', user_type='doctors') }}" class="button">Sign Up as doctors</a>
+    <a href="{{ url_for('signup', user_type='patients') }}" class="button">Sign Up as patients</a>
+    <a href="{{ url_for('login', user_type='doctors') }}" class="button">Login as doctors</a>
+    <a href="{{ url_for('login', user_type='patients') }}" class="button">Login as patients</a>
+    <a href="{{ url_for('admin_login') }}" class="button">Admin Login</a> <!-- Added Admin Login Button -->
+</body>
+</html>

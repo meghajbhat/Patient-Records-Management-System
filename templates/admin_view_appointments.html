@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Appointments</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">All Appointments</h1>
+
+        <!-- Check if appointments exist -->
+        {% if appointments %}
+            <table class="table table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>#</th>
+                        <th>Date & Time</th>
+                        <th>Patient</th>
+                        <th>Doctor</th>
+                        <th>Notes</th>
+                        <th>Status</th>
+                        <th>Bill Amount</th>
+                        <th>Payment Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Loop through appointments -->
+                    {% for appointment in appointments %}
+                        <tr>
+                            <td>{{ appointment['A_ID'] }}</td>
+                            <td>{{ appointment['time'] }}</td>
+                            <td>{{ appointment['patient_name'] }}</td>
+                            <td>{{ appointment['doctor_name'] }}</td>
+                            <td>{{ appointment['notes'] }}</td>
+                            <td>{{ appointment['status'] }}</td>
+                            <td>{{ appointment['bill_amount'] or 'N/A' }}</td>
+                            <td>{{ appointment['payment_status'] or 'N/A' }}</td>
+                            <td>
+                                <!-- Form to update payment status -->
+                                {% if appointment['bill_amount'] %}
+                                <form method="POST" action="{{ url_for('update_payment_status', bill_id=appointment['A_ID']) }}">
+                                    <select name="payment_status" class="form-control form-control-sm">
+                                        <option value="Yet to be done" {% if appointment['payment_status'] == 'Yet to be done' %}selected{% endif %}>
+                                            Yet to be done
+                                        </option>
+                                        <option value="Completed" {% if appointment['payment_status'] == 'Completed' %}selected{% endif %}>
+                                            Completed
+                                        </option>
+                                    </select>
+                                    <button type="submit" class="btn btn-primary btn-sm mt-2">Update</button>
+                                </form>
+                                {% else %}
+                                No bill available
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <div class="alert alert-info">
+                <strong>No appointments found.</strong>
+            </div>
+        {% endif %}
+
+        <a href="{{ url_for('admin_dashboard') }}" class="btn btn-secondary mt-3">Back to Dashboard</a>
+    </div>
+</body>
+</html>

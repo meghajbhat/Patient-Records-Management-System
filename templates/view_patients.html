@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View All Patients</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        table {
+            margin-top: 20px;
+        }
+        .btn {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>View All Patients</h1>
+
+    {% if patients %}
+        <table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Patient ID</th>
+					<th>Name</th>
+					<th>Date of Birth</th>
+					<th>Age</th> <!-- New column -->
+					<th>Symptoms</th>
+					<th>Phone Number</th>
+					<th>Blood Group</th>
+					<th>Insurance Provider</th>
+					<th>Email</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for patient in patients %}
+				<tr>
+					<td>{{ patient.P_ID }}</td>
+					<td>{{ patient.name }}</td>
+					<td>{{ patient.DOB }}</td>
+					<td>{{ patient.Age }}</td> <!-- Display Age -->
+					<td>{{ patient.symptoms }}</td>
+					<td>{{ patient.phone_no }}</td>
+					<td>{{ patient.blood_group }}</td>
+					<td>{{ patient.insurance }}</td>
+					<td>{{ patient.email }}</td>
+					<td>
+						<!-- Delete Button -->
+						<form action="{{ url_for('delete_patient', patient_id=patient.P_ID) }}" method="post" style="display:inline;">
+							<button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this patient?');">Delete</button>
+						</form>
+
+						<!-- Edit Button -->
+						<a href="{{ url_for('edit_patient', patient_id=patient.P_ID) }}" class="btn btn-warning btn-sm">Edit</a>
+					</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+    {% else %}
+        <p>No patients found.</p>
+    {% endif %}
+
+    <a href="{{ url_for('admin_dashboard') }}" class="btn btn-primary">Back to Dashboard</a>
+</div>
+
+<!-- Include Bootstrap JS and jQuery for collapse functionality -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

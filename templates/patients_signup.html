@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Signup</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #ffffff;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+            color: #4A4A4A;
+        }
+
+        form {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            margin: 30px auto 0;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: 700;
+            text-align: left;
+        }
+
+        input[type="text"], input[type="date"], textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 2px solid #0072ff;
+            border-radius: 5px;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus, input[type="date"]:focus {
+            border-color: #00c6ff;
+            outline: none;
+        }
+
+        input[type="submit"] {
+            padding: 12px 20px;
+            background: linear-gradient(45deg, #00c6ff, #0072ff);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+            width: 100%;
+        }
+
+        input[type="submit"]:hover {
+            background: linear-gradient(45deg, #0095ff, #0056b3);
+            transform: translateY(-2px);
+        }
+
+        input[type="submit"]:active {
+            transform: translateY(1px);
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            form {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Patient Signup</h1>
+        <form method="POST">
+            <label>Name:</label>
+            <input type="text" name="name" required>
+
+            <label>Date of Birth:</label>
+            <input type="date" name="dob" required>
+
+            <label>Symptoms:</label>
+            <textarea name="symptoms" required></textarea>
+
+            <label>Phone Number:</label>
+            <input type="text" name="phone_no" required>
+
+            <label>Blood Group:</label>
+            <input type="text" name="blood_group" required>
+
+            <label>Insurance Provider:</label>
+            <input type="text" name="insurance" required>
+
+            <label>Email:</label>
+            <input type="email" name="email" required>
+
+            <label>Password:</label>
+            <input type="password" name="password" required>
+
+            <input type="submit" value="Signup">
+        </form>
+    </div>
+</body>
+</html>

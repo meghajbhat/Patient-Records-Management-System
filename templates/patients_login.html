@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Login</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f5f7fa;
+        }
+
+        .container {
+            max-width: 400px;
+            width: 100%;
+            padding: 2rem;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            color: #333333;
+        }
+
+        label {
+            display: block;
+            font-weight: 500;
+            color: #555555;
+            margin-bottom: 0.5rem;
+            text-align: left;
+        }
+
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 1.25rem;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+            font-size: 1rem;
+            background-color: #f9f9f9;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 0.75rem;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #ffffff;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .form-footer {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: #666666;
+        }
+
+        .form-footer a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        .form-footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Patient Login</h1>
+        <form method="POST" action="/login/patients">
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" required>
+
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" required>
+
+            <input type="submit" value="Login">
+        </form>
+        <div class="form-footer">
+            <p>Don't have an account? <a href="/signup/patient">Sign up</a></p>
+        </div>
+    </div>
+</body>
+</html>

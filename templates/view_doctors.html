@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View All Doctors</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body { padding: 20px; background-color: #f8f9fa; }
+        h1 { margin-bottom: 20px; color: #343a40; }
+        table { margin-top: 20px; }
+        th { color: black; }
+        tr:hover { background-color: #e9ecef; }
+        .btn { margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>View All Doctors</h1>
+
+    {% if doctors %}
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Doctor ID</th>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Job Title</th>
+                    <th>Degree</th>
+                    <th>Year</th>
+                    <th>Employer</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for doctor in doctors %}
+                <tr>
+                    <td>{{ doctor.D_ID }}</td>
+                    <td>{{ doctor.name }}</td>
+                    <td>{{ doctor.phone_no }}</td>
+                    <td>{{ doctor.email }}</td>
+                    <td>{{ doctor.job_title }}</td>
+                    <td>{{ doctor.degree }}</td>
+                    <td>{{ doctor.year }}</td>
+                    <td>{{ doctor.employer }}</td>
+                    <td>
+                        <!-- Delete Button -->
+                        <form action="{{ url_for('delete_doctor', doctor_id=doctor.D_ID) }}" method="post" style="display:inline;">
+                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this doctor?');">Delete</button>
+                        </form>
+
+                        <!-- Edit Button -->
+                        <a href="{{ url_for('edit_doctor', doctor_id=doctor.D_ID) }}" class="btn btn-warning btn-sm">Edit</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No doctors found.</p>
+    {% endif %}
+
+    <a href="{{ url_for('admin_dashboard') }}" class="btn btn-primary">Back to Dashboard</a>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - doctors Connect</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f5f7fa;
+            margin: 0;
+            display: flex;
+        }
+        .sidebar {
+            width: 100px;
+            background-color: #343a40;
+            color: #ffffff;
+            padding: 2rem;
+            height: 100vh;
+            position: fixed;
+        }
+        .sidebar h2 {
+            color: #ffffff;
+        }
+        .sidebar p, .sidebar a {
+            padding: 0.5rem 0;
+            margin: 0;
+            color: #ffffff;
+            text-decoration: none;
+            display: block;
+        }
+        .sidebar a:hover {
+            color: #c0c0c0;
+        }
+        .content {
+            margin-left: 250px;
+            padding: 2rem;
+            flex-grow: 1;
+        }
+        .profile {
+            background-color: #ffffff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .logout {
+            margin-top: 2rem;
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background-color: #dc3545;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+        .logout:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Navigation</h2>
+        <p>Group</p>
+        <a href="{{ url_for('join_group', group_id=your_group_id) }}">Membership</a>
+        <p>Message</p>
+        <p>Organizer</p>
+        <!-- Link to the registration form page -->
+        <a href="{{ url_for('view_events') }}">View events</a>
+    </div>
+    <div class="content">
+        <h1>Welcome, {{ user.name }}!</h1>
+        <div class="profile">
+            <h2>Profile Information</h2>
+            <p><strong>Email:</strong> {{ user.email }}</p>
+            {% if user.job_title %}
+                <p><strong>Job Title:</strong> {{ user.job_title }}</p>
+            {% endif %}
+            {% if user.patients_id %}
+                <p><strong>patients ID:</strong> {{ user.patients_id }}</p>
+            {% endif %}
+            <p><strong>Phone:</strong> {{ user.phone }}</p>
+            <p><strong>Degree:</strong> {{ user.degree }}</p>
+            <p><strong>Year of Graduation:</strong> {{ user.year }}</p>
+            <p><strong>Employer:</strong> {{ user.employer }}</p>
+        </div>
+        <a class="logout" href="{{ url_for('logout') }}">Logout</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>doctors Signup</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #ffffff; /* Solid white background */
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+            color: #4A4A4A;
+        }
+
+        form {
+            background-color: #ffffff; /* White background for the form */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+            width: 300px; /* Fixed width for better alignment */
+            margin: 30px auto 0; /* Add top margin for spacing */
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: 700;
+            text-align: left;
+        }
+
+        input[type="text"],
+        input[type="email"] {
+            width: 100%; /* Full width for inputs */
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 2px solid #0072ff; /* Bright border */
+            border-radius: 5px;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus {
+            border-color: #00c6ff; /* Change border color on focus */
+            outline: none; /* Remove default outline */
+        }
+
+        input[type="submit"] {
+            padding: 12px 20px;
+            background: linear-gradient(45deg, #00c6ff, #0072ff); /* Bright gradient */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+            width: 100%;
+        }
+
+        input[type="submit"]:hover {
+            background: linear-gradient(45deg, #0095ff, #0056b3); /* Darker gradient on hover */
+            transform: translateY(-2px);
+        }
+
+        input[type="submit"]:active {
+            transform: translateY(1px);
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            form {
+                width: 90%; /* Responsive form width */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>doctors Signup</h1>
+        <form method="POST">
+            <label>Name:</label>
+            <input type="text" name="name" required>
+
+            <label>Phone:</label>
+            <input type="text" name="phone_no">
+
+            <label>Email:</label>
+            <input type="email" name="email">
+
+            <label>Job Title:</label>
+            <input type="text" name="job_title">
+
+            <label>Degree:</label>
+            <input type="text" name="degree">
+
+            <label>Years of experience:</label>
+            <input type="text" name="year" required>
+
+            <label>Employer:</label>
+            <input type="text" name="employer">
+
+            <label>Password:</label>
+            <input type="text" name="password">
+
+            <input type="submit" value="Signup">
+        </form>
+    </div>
+</body>
+</html>
