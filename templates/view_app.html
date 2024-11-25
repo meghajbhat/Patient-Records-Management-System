@@ -5,12 +5,69 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Appointments</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            padding: 20px;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .container {
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #e74c3c;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        table {
+            margin-top: 20px;
+        }
+
+        .thead-dark th {
+            background-color: #c0392b;
+            color: #fff;
+        }
+
+        tr:hover {
+            background-color: #fbe9e7;
+        }
+
+        .btn-danger {
+            transition: all 0.3s ease;
+        }
+
+        .btn-danger:hover {
+            background-color: #b71c1c;
+        }
+
+        .alert-info {
+            background-color: #eaf4fc;
+            border: 1px solid #b3d8ff;
+            color: #0b5394;
+        }
+
+        .btn-secondary {
+            background-color: #4a90e2;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background-color: #357ab8;
+        }
+    </style>
 </head>
 <body>
-    <div class="container mt-5">
-        <h1 class="mb-4">Your Appointments</h1>
+    <div class="container">
+        <h1>Your Appointments</h1>
 
-        <!-- Check if appointments exist -->
         {% if appointments %}
             <table class="table table-bordered">
                 <thead class="thead-dark">
@@ -26,37 +83,36 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Loop through appointments -->
                     {% for appointment in appointments %}
-                        <tr>
-                            <td>{{ appointment['appointment_id'] }}</td>
-                            <td>{{ appointment['appointment_time'] }}</td>
-                            <td>{{ appointment['doctor_name'] }}</td>
-                            <td>{{ appointment['notes'] }}</td>
-                            <td>{{ appointment['status'] }}</td>
-                            <td>
-                                {% if appointment['prescription_name'] %}
-                                    <strong>{{ appointment['prescription_name'] }}</strong><br>
-                                    Dosage: {{ appointment['dosage'] }}<br>
-                                    Instructions: {{ appointment['instructions'] }}
-                                {% else %}
-                                    No prescription added
-                                {% endif %}
-                            </td>
-                            <td>
-                                {% if appointment['bill_amount'] %}
-                                    Amount: {{ appointment['bill_amount'] }}<br>
-                                    Status: {{ appointment['bill_status'] }}
-                                {% else %}
-                                    No bill generated
-                                {% endif %}
-                            </td>
-                            <td>
-                                <form method="POST" action="{{ url_for('cancel_appointment', appointment_id=appointment['appointment_id']) }}">
-                                    <button type="submit" class="btn btn-danger btn-sm">Cancel</button>
-                                </form>
-                            </td>
-                        </tr>
+                    <tr>
+                        <td>{{ appointment['appointment_id'] }}</td>
+                        <td>{{ appointment['appointment_time'] }}</td>
+                        <td>{{ appointment['doctor_name'] }}</td>
+                        <td>{{ appointment['notes'] }}</td>
+                        <td>{{ appointment['status'] }}</td>
+                        <td>
+                            {% if appointment['prescription_name'] %}
+                                <strong>{{ appointment['prescription_name'] }}</strong><br>
+                                Dosage: {{ appointment['dosage'] }}<br>
+                                Instructions: {{ appointment['instructions'] }}
+                            {% else %}
+                                No prescription added
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if appointment['bill_amount'] %}
+                                Amount: {{ appointment['bill_amount'] }}<br>
+                                Status: {{ appointment['bill_status'] }}
+                            {% else %}
+                                No bill generated
+                            {% endif %}
+                        </td>
+                        <td>
+                            <form method="POST" action="{{ url_for('cancel_appointment', appointment_id=appointment['appointment_id']) }}">
+                                <button type="submit" class="btn btn-danger btn-sm">Cancel</button>
+                            </form>
+                        </td>
+                    </tr>
                     {% endfor %}
                 </tbody>
             </table>

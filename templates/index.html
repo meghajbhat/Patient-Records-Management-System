@@ -3,47 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to doctors Connect</title>
+    <title>Welcome to Doctors Connect</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
     <style>
         body {
             font-family: 'Roboto', sans-serif;
-            background-color: #f9f9f9;
+            background: linear-gradient(to right, #6dd5ed, #2193b0);
             margin: 0;
-            padding: 20px;
+            padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
-            flex-direction: column;
             height: 100vh;
+            color: #ffffff;
+        }
+        .container {
+            text-align: center;
         }
         h1 {
-            margin-bottom: 20px;
+            margin-bottom: 30px;
+            font-size: 3rem;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
         }
         .button {
+            display: inline-block;
             background: linear-gradient(90deg, #4CAF50, #81C784);
             color: white;
             border: none;
-            padding: 15px;
+            padding: 15px 25px;
+            margin: 10px;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 18px;
-            margin: 10px;
+            font-size: 1.2rem;
             text-decoration: none;
-            width: 200px;
-            text-align: center;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease-in-out;
         }
         .button:hover {
+            transform: translateY(-3px);
             background: linear-gradient(90deg, #388E3C, #66BB6A);
+            box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.3);
         }
     </style>
 </head>
 <body>
-    <h1>Welcome to M&M Hospital</h1>
-    <a href="{{ url_for('signup', user_type='doctors') }}" class="button">Sign Up as doctors</a>
-    <a href="{{ url_for('signup', user_type='patients') }}" class="button">Sign Up as patients</a>
-    <a href="{{ url_for('login', user_type='doctors') }}" class="button">Login as doctors</a>
-    <a href="{{ url_for('login', user_type='patients') }}" class="button">Login as patients</a>
-    <a href="{{ url_for('admin_login') }}" class="button">Admin Login</a> <!-- Added Admin Login Button -->
+    <div class="container">
+        <h1>Welcome to M&M Hospital</h1>
+        <a href="{{ url_for('signup', user_type='doctors') }}" class="button">Sign Up as Doctor</a>
+        <a href="{{ url_for('signup', user_type='patients') }}" class="button">Sign Up as Patient</a>
+        <a href="{{ url_for('login', user_type='doctors') }}" class="button">Login as Doctor</a>
+        <a href="{{ url_for('login', user_type='patients') }}" class="button">Login as Patient</a>
+        <a href="{{ url_for('admin_login') }}" class="button">Admin Login</a>
+    </div>
 </body>
 </html>

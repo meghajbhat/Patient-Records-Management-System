@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>doctors Signup</title>
+    <title>Doctors Signup</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
     <style>
         body {
             font-family: 'Roboto', sans-serif;
-            background-color: #ffffff; /* Solid white background */
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
             color: #333;
             margin: 0;
             padding: 0;
@@ -22,16 +22,16 @@
         h1 {
             margin-bottom: 20px;
             font-size: 2.5rem;
-            color: #4A4A4A;
+            color: #e74c3c;
         }
 
         form {
-            background-color: #ffffff; /* White background for the form */
+            background-color: #ffffff;
             padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
-            width: 300px; /* Fixed width for better alignment */
-            margin: 30px auto 0; /* Add top margin for spacing */
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            width: 320px;
+            animation: slideIn 1s ease-in-out;
         }
 
         label {
@@ -39,30 +39,31 @@
             margin: 10px 0 5px;
             font-weight: 700;
             text-align: left;
+            color: #555;
         }
 
-        input[type="text"],
-        input[type="email"] {
-            width: 100%; /* Full width for inputs */
-            padding: 10px;
+        input[type="text"], input[type="email"], input[type="password"] {
+            width: 100%;
+            padding: 12px;
             margin-bottom: 15px;
-            border: 2px solid #0072ff; /* Bright border */
-            border-radius: 5px;
-            transition: border-color 0.3s;
+            border: 2px solid #e74c3c;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
         }
 
-        input[type="text"]:focus,
-        input[type="email"]:focus {
-            border-color: #00c6ff; /* Change border color on focus */
-            outline: none; /* Remove default outline */
+        input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus {
+            border-color: #c0392b;
+            box-shadow: 0 0 8px rgba(231, 76, 60, 0.5);
+            outline: none;
         }
 
         input[type="submit"] {
             padding: 12px 20px;
-            background: linear-gradient(45deg, #00c6ff, #0072ff); /* Bright gradient */
+            background: linear-gradient(45deg, #e74c3c, #c0392b);
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             font-size: 1.2rem;
             cursor: pointer;
             transition: background 0.3s, transform 0.2s;
@@ -70,12 +71,23 @@
         }
 
         input[type="submit"]:hover {
-            background: linear-gradient(45deg, #0095ff, #0056b3); /* Darker gradient on hover */
+            background: linear-gradient(45deg, #d63031, #e84393);
             transform: translateY(-2px);
         }
 
         input[type="submit"]:active {
             transform: translateY(1px);
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
 
         @media (max-width: 600px) {
@@ -84,14 +96,14 @@
             }
 
             form {
-                width: 90%; /* Responsive form width */
+                width: 90%;
             }
         }
     </style>
 </head>
 <body>
     <div>
-        <h1>doctors Signup</h1>
+        <h1>Doctors Signup</h1>
         <form method="POST">
             <label>Name:</label>
             <input type="text" name="name" required>
@@ -108,14 +120,14 @@
             <label>Degree:</label>
             <input type="text" name="degree">
 
-            <label>Years of experience:</label>
+            <label>Years of Experience:</label>
             <input type="text" name="year" required>
 
             <label>Employer:</label>
             <input type="text" name="employer">
 
             <label>Password:</label>
-            <input type="text" name="password">
+            <input type="password" name="password">
 
             <input type="submit" value="Signup">
         </form>

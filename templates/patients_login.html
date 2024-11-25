@@ -18,7 +18,8 @@
             align-items: center;
             height: 100vh;
             font-family: 'Roboto', sans-serif;
-            background-color: #f5f7fa;
+            background: linear-gradient(135deg, #74ebd5, #acb6e5);
+            color: #333333;
         }
 
         .container {
@@ -26,20 +27,21 @@
             width: 100%;
             padding: 2rem;
             background-color: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
             text-align: center;
+            animation: fadeIn 1s ease-in-out;
         }
 
         h1 {
             margin-bottom: 1.5rem;
             font-weight: 700;
-            color: #333333;
+            color: #4a90e2;
         }
 
         label {
             display: block;
-            font-weight: 500;
+            font-weight: 600;
             color: #555555;
             margin-bottom: 0.5rem;
             text-align: left;
@@ -48,29 +50,37 @@
         input[type="email"],
         input[type="password"] {
             width: 100%;
-            padding: 0.75rem;
+            padding: 0.8rem;
             margin-bottom: 1.25rem;
             border: 1px solid #cccccc;
-            border-radius: 5px;
+            border-radius: 8px;
             font-size: 1rem;
             background-color: #f9f9f9;
+            transition: border-color 0.3s;
+        }
+
+        input[type="email"]:focus,
+        input[type="password"]:focus {
+            border-color: #4a90e2;
+            outline: none;
         }
 
         input[type="submit"] {
             width: 100%;
-            padding: 0.75rem;
+            padding: 0.8rem;
             font-size: 1rem;
             font-weight: 700;
             color: #ffffff;
-            background-color: #007BFF;
+            background-color: #4a90e2;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
             transition: background-color 0.3s ease;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         input[type="submit"]:hover {
-            background-color: #0056b3;
+            background-color: #357ab8;
         }
 
         .form-footer {
@@ -80,12 +90,24 @@
         }
 
         .form-footer a {
-            color: #007BFF;
+            color: #4a90e2;
             text-decoration: none;
+            font-weight: 600;
         }
 
         .form-footer a:hover {
             text-decoration: underline;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>

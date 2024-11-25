@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>doctors Login</title>
+    <title>Doctor Login</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
     <style>
         * {
@@ -11,81 +11,103 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             font-family: 'Roboto', sans-serif;
-            background-color: #f4f6f8;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            color: #333333;
         }
-        
+
         .container {
             max-width: 400px;
             width: 100%;
             padding: 2rem;
             background-color: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
             text-align: center;
+            animation: slideIn 1s ease-in-out;
         }
-        
+
         h1 {
             margin-bottom: 1.5rem;
             font-weight: 700;
-            color: #333333;
+            color: #e74c3c;
         }
-        
+
         label {
             display: block;
-            font-weight: 500;
+            font-weight: 600;
             color: #555555;
             margin-bottom: 0.5rem;
             text-align: left;
         }
-        
+
         input[type="email"],
         input[type="password"] {
             width: 100%;
-            padding: 0.75rem;
+            padding: 0.8rem;
             margin-bottom: 1.25rem;
             border: 1px solid #cccccc;
-            border-radius: 5px;
+            border-radius: 8px;
             font-size: 1rem;
             background-color: #f9f9f9;
+            transition: border-color 0.3s;
         }
-        
+
+        input[type="email"]:focus,
+        input[type="password"]:focus {
+            border-color: #e74c3c;
+            outline: none;
+        }
+
         input[type="submit"] {
             width: 100%;
-            padding: 0.75rem;
+            padding: 0.8rem;
             font-size: 1rem;
             font-weight: 700;
             color: #ffffff;
-            background-color: #007BFF;
+            background-color: #e74c3c;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
             transition: background-color 0.3s ease;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
         }
-        
+
         input[type="submit"]:hover {
-            background-color: #0056b3;
+            background-color: #c0392b;
         }
-        
+
         .form-footer {
             margin-top: 1rem;
             font-size: 0.9rem;
             color: #666666;
         }
-        
+
         .form-footer a {
-            color: #007BFF;
+            color: #e74c3c;
             text-decoration: none;
+            font-weight: 600;
         }
 
         .form-footer a:hover {
             text-decoration: underline;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
     </style>
 </head>
@@ -95,10 +117,10 @@
         <form method="POST" action="/login/doctors">
             <label for="email">Email:</label>
             <input type="email" name="email" id="email" required>
-            
+
             <label for="password">Password:</label>
             <input type="password" name="password" id="password" required>
-            
+
             <input type="submit" value="Login">
         </form>
         <div class="form-footer">

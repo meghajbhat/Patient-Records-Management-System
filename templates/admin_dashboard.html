@@ -7,92 +7,151 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
+            background: linear-gradient(135deg, #74ebd5, #acb6e5);
+            color: #333;
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
             padding: 20px;
-            background-color: #f8f9fa;
         }
+
         h1 {
-            margin-bottom: 20px;
+            margin-bottom: 30px;
             text-align: center;
+            color: #4a90e2;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
         }
-        .list-group-item a {
-            text-decoration: none;
-            color: #007bff;
+
+        .container {
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
         }
-        .list-group-item a:hover {
-            text-decoration: underline;
-        }
+
         .column-title {
             text-align: center;
             margin-bottom: 15px;
             font-weight: bold;
+            font-size: 1.2rem;
+            color: #555;
+        }
+
+        .list-group-item {
+            border: none;
+            margin-bottom: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-radius: 8px;
+        }
+
+        .list-group-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+            background-color: #f1f1f1;
+        }
+
+        .list-group-item a {
+            text-decoration: none;
+            color: #4a90e2;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .list-group-item a:hover {
+            color: #007bff;
+        }
+
+        .logout-btn {
+            background: linear-gradient(45deg, #e74c3c, #c0392b);
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .logout-btn:hover {
+            background: linear-gradient(45deg, #c0392b, #a93226);
+            transform: translateY(-2px);
+        }
+
+        .logout-btn:active {
+            transform: translateY(1px);
+        }
+
+        .welcome-msg {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: #555;
         }
     </style>
 </head>
 <body>
+    <div class="container">
+        <h1>Admin Dashboard</h1>
+        <p class="welcome-msg">Welcome, {{ session['username'] }}!</p>
 
-<div class="container">
-    <h1>Admin Dashboard</h1>
-    <p class="text-center">Welcome, {{ session['username'] }}!</p>
+        <!-- Grid Layout -->
+        <div class="row">
+            <!-- Admin Section -->
+            <div class="col-md-3">
+                <div class="column-title">Admin</div>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <a href="{{ url_for('view_administrators') }}">View All Administrators</a>
+                    </li>
+                </ul>
+            </div>
 
-    <!-- Grid Layout -->
-    <div class="row">
-        <!-- Admin Section (Left Column) -->
-        <div class="col-md-4">
-            <div class="column-title">Admin</div>
-            <ul class="list-group">
-                <li class="list-group-item">
-                    <a href="{{ url_for('view_administrators') }}">View All Administrators</a>
-                </li>
-            </ul>
+            <!-- Patients Section -->
+            <div class="col-md-3">
+                <div class="column-title">Patients</div>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <a href="{{ url_for('view_patients') }}">View All Patients</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="{{ url_for('search_patients') }}">Search Patients</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Doctors Section -->
+            <div class="col-md-3">
+                <div class="column-title">Doctors</div>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <a href="{{ url_for('view_doctors') }}">View All Doctors</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="{{ url_for('search_doctors') }}">Search Doctors</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Appointments Section -->
+            <div class="col-md-3">
+                <div class="column-title">Appointments</div>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <a href="{{ url_for('view_all_appointments') }}">View All Appointments</a>
+                    </li>
+                </ul>
+            </div>
         </div>
 
-        <!-- Patients Section (Middle Column) -->
-        <div class="col-md-4">
-            <div class="column-title">Patients</div>
-            <ul class="list-group">
-                <li class="list-group-item">
-                    <a href="{{ url_for('view_patients') }}">View All Patients</a>
-                </li>
-                <li class="list-group-item">
-                    <a href="{{ url_for('search_patients') }}">Search Patients</a>
-                </li>
-            </ul>
-        </div>
-
-        <!-- Doctors Section (Right Column) -->
-        <div class="col-md-4">
-            <div class="column-title">Doctors</div>
-            <ul class="list-group">
-                <li class="list-group-item">
-                    <a href="{{ url_for('view_doctors') }}">View All Doctors</a>
-                </li>
-                <li class="list-group-item">
-                    <a href="{{ url_for('search_doctors') }}">Search Doctors</a>
-                </li>
-            </ul>
+        <!-- Logout Button -->
+        <div class="text-center mt-4">
+            <button onclick="window.location.href='{{ url_for('logout') }}'" class="logout-btn">Logout</button>
         </div>
     </div>
-	
-	<!-- Viewing Appointments -->
-	<div class="col-md-4">
-		<div class="column-title">Appointments</div>
-		<ul class="list-group">
-			<li class="list-group-item">
-				<a href="{{ url_for('view_all_appointments') }}">View All Appointments</a>
-			</li>
-		</ul>
-	</div>
 
-
-
-    <!-- Logout Section -->
-    <div class="text-center mt-4">
-        <a href="{{ url_for('logout') }}" class="btn btn-danger">Logout</a>
-    </div>
-</div>
-
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

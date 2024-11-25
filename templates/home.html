@@ -3,71 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - doctors Connect</title>
+    <title>Home - Doctors Connect</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
     <style>
         body {
             font-family: 'Roboto', sans-serif;
-            background-color: #f5f7fa;
+            background-color: #eef2f5;
             margin: 0;
             display: flex;
+            height: 100vh;
         }
         .sidebar {
-            width: 100px;
-            background-color: #343a40;
-            color: #ffffff;
+            width: 250px;
+            background-color: #2c3e50;
+            color: #ecf0f1;
             padding: 2rem;
             height: 100vh;
             position: fixed;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
         .sidebar h2 {
-            color: #ffffff;
+            color: #1abc9c;
+            text-align: center;
+            margin-bottom: 2rem;
         }
-        .sidebar p, .sidebar a {
-            padding: 0.5rem 0;
-            margin: 0;
-            color: #ffffff;
+        .sidebar a {
+            padding: 0.8rem 1rem;
+            margin: 0.5rem 0;
+            background-color: #34495e;
+            color: #ecf0f1;
             text-decoration: none;
-            display: block;
+            border-radius: 5px;
+            transition: all 0.3s;
         }
         .sidebar a:hover {
-            color: #c0c0c0;
+            background-color: #1abc9c;
         }
         .content {
             margin-left: 250px;
             padding: 2rem;
             flex-grow: 1;
+            background-color: #ffffff;
+            overflow-y: auto;
         }
         .profile {
             background-color: #ffffff;
             padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        .profile h2 {
+            color: #34495e;
+            margin-bottom: 1rem;
+        }
+        .profile p {
+            margin: 0.5rem 0;
+            color: #7f8c8d;
         }
         .logout {
-            margin-top: 2rem;
             display: inline-block;
-            padding: 0.5rem 1rem;
-            background-color: #dc3545;
+            padding: 0.7rem 1.5rem;
+            background-color: #e74c3c;
             color: #ffffff;
             text-decoration: none;
-            border-radius: 4px;
-            transition: background 0.3s;
+            border-radius: 5px;
+            transition: all 0.3s;
+            margin-top: 1rem;
         }
         .logout:hover {
-            background-color: #c82333;
+            background-color: #c0392b;
         }
     </style>
 </head>
 <body>
     <div class="sidebar">
-        <h2>Navigation</h2>
-        <p>Group</p>
-        <a href="{{ url_for('join_group', group_id=your_group_id) }}">Membership</a>
-        <p>Message</p>
-        <p>Organizer</p>
-        <!-- Link to the registration form page -->
-        <a href="{{ url_for('view_events') }}">View events</a>
+        <h2>Doctors Connect</h2>
+        <nav>
+            <a href="{{ url_for('join_group', group_id=your_group_id) }}">Membership</a>
+            <a href="{{ url_for('view_events') }}">View Events</a>
+        </nav>
+        <p style="text-align: center;">&copy; 2024 Doctors Connect</p>
     </div>
     <div class="content">
         <h1>Welcome, {{ user.name }}!</h1>
@@ -78,7 +95,7 @@
                 <p><strong>Job Title:</strong> {{ user.job_title }}</p>
             {% endif %}
             {% if user.patients_id %}
-                <p><strong>patients ID:</strong> {{ user.patients_id }}</p>
+                <p><strong>Patients ID:</strong> {{ user.patients_id }}</p>
             {% endif %}
             <p><strong>Phone:</strong> {{ user.phone }}</p>
             <p><strong>Degree:</strong> {{ user.degree }}</p>
