@@ -57,6 +57,7 @@ The **Patient Records Management System** is a robust web-based application desi
 │   ├── admin_dashboard.html
 │   └── ...
 
+---
 
 ## 💻 Installation and Usage
 1. **Clone the Repository**:
